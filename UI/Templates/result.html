@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  
+    <style>
+        table, th, td {
+          background-color: beige;
+          border:1px solid black;
+          color: blue;
+        }
+        
+        </style>
+        <body>
+          <center>
+        <table style="width:50%">
+          <tr>
+             <th>Last Working Days</th>
+          </tr>
+
+          <tr>
+            <td>{%for i in range(0,13)%}
+                 <p>{{wd[i]}}</p>
+                 {%endfor%}
+             </td> 
+          </tr>
+         </center> 
+  
+</html>
