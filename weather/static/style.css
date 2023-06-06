@@ -1,0 +1,20 @@
+.container {
+    height: content;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .logo-heading {
+    height: 250px;
+    width: 250px;
+    margin-top: -20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  
+  
+  
