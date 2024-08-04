@@ -1,0 +1,941 @@
+
+
+1. print the values of a string from certain idex to certain index
+string="pavan kumar"
+print(len(string))
+print(string[::])
+print(string[5:])
+print(string[4:8])
+print(string[-1:-5])
+print(string[::-1])
+
+2. reverse the given string using python in-built function
+
+string="hexaware"
+print("".join(reversed(string)))
+
+3. print the same string '10' number of times
+
+string="10"
+print(string*10)
+
+4. print the following string by saving it into a variable "My name is 'xyz', "I'm n years old""
+
+string='''"my name is 'pavan',"i'am 22 years old"'''
+print(string)
+
+5. print the output in the following way by having entire text in a single variable
+
+output:
+
+I am XYZ
+
+I am n years old
+
+I have n years of experience
+
+string=''' i am pavan
+i am 22 years old
+i have 1 year of experience'''
+print(string)
+
+1. write a program to print prime numbers from x to y (X and Y should be a run time input) - Say, x = 10, y = 15 then output should be 11, 13
+
+def prime(x ,y):
+   
+    for num in range(x,y+1):
+        if num==0 or num>1:
+            for i in range(2,num):
+                if(num%i)==0:
+                    break
+            else:
+                print(num)
+prime(1,10)
+
+2. write a program to do the calculation of sum, sub, mul, div (it should show quotient), 
+mod (it should show reminder) - Try to put it into a separate def for each sum, sub, etc.
+
+
+#class file
+class calci:
+    def add(num1, num2):
+        return num1 + num2
+  
+
+    def subtract(num1, num2):
+        return num1 - num2
+
+    def multiply(num1, num2):
+         return num1 * num2
+
+    def divide(num1, num2):
+        try:
+            divide= num1 / num2
+            reminder=num1%num2
+            quotient=num1//num2
+            return divide,reminder,quotient
+        except ZeroDivisionError:
+            print("Zero cannot be input for divison")
+
+
+#obj2file
+
+from calci import calci
+ca=calci
+
+  
+number_1 = int(input("Enter first number: "))
+number_2 = int(input("Enter second number: "))
+print("Please select operation -\n" \
+        "1. Add\n" \
+        "2. Subtract\n" \
+        "3. Multiply\n" \
+        "4. Divide\n")
+select = str(input("Select operations form +, -, *, /:"))
+  
+if select == "+":
+    print(number_1, "+", number_2, "=",ca.add(number_1, number_2))
+  
+elif select == '-':
+    print(number_1, "-", number_2, "=",
+                    ca.subtract(number_1, number_2))
+  
+elif select == '*':
+    print(number_1, "*", number_2, "=",
+                    ca.multiply(number_1, number_2))
+  
+elif select == '/':
+    print(number_1, "/", number_2, "=",
+                    ca.divide(number_1, number_2))
+    
+else:
+    print("Invalid input")
+
+
+
+
+
+
+
+3. write a program to print the leap year from x to y (X and Y should be a run time input)
+
+def LeapYear():
+    try:
+        x=int(input("enter the starting year:"))
+        y=int(input("enter the ending year:"))
+        for num in range(x,y+1):
+             if (num %400==0) or(num%4==0 and num%100!=0):
+                 print(num)
+    except ValueError:
+        print('inavalid value')
+LeapYear()
+
+
+
+6. write a program to find number of occurences of a letter in a string - Input should be run time 
+
+
+string=str(input("enter the string:"))
+ch=''
+ch=input("enter the letter to check :")
+count=0
+for i in (string):
+    if ch==i:
+        count+=1
+print(count)
+        
+
+
+7. write a program to find a string is palindrome or not
+
+string=str(input("enter the string:"))
+p=("".join(reversed(string)))
+if string==p:
+    print(f"{string} is pallindrome")
+else:
+    print(f"{string} is not pallindrome")
+
+
+5. write a program to print the diagonal of a 3 * 3 matrix - Input should be run time
+
+def inputmatrix(i):
+    mat=[]
+    print(f"Enter  Elements for  Matrix {i}: ")
+    for i in range(3):
+        mat.append([])
+        for j in range(3):
+            num = int(input())
+            mat[i].append(num)
+    return mat
+
+mat1=inputmatrix(1)
+
+print(type(mat1))
+print(mat1)
+for i in range(len(mat1)):
+    print(mat1[i][i])
+mat2=inputmatrix(2)
+print(mat2)
+
+
+def ResultMatrix():
+    result=[]
+    print(len(mat1),len(mat2))
+    for i in range(len(mat1)):
+        result.append([]*len(mat1[0]))
+        new =[]
+        for j in range(len(mat1[0])):
+            new.append(mat1[i][j]+mat2[i][j])
+        result.append(new)
+    return result
+
+print(ResultMatrix())
+
+
+9. write a program to find the Monday date of a week (Input should be a any date and Output should be
+ that weeks Monday date (Say, I/P: 28/04/2023 O/P: 24/04/2023)
+
+
+
+from datetime import date
+
+from dateutil.relativedelta import relativedelta,  MO
+
+todayDate=date.today()
+print(todayDate)
+
+
+lastMonday=todayDate+relativedelta(weekday=MO(-1))
+print(lastMonday)
+
+===============================================================================
+LISTS
+=======================================
+7. Write a program to create 2 different lists and concatenate both into a single list
+
+lst1=[1,2,"hexaware",3.4,'a',78]
+lst2=["pavan","kiran",445,868]
+lst3=lst1+lst2
+print(lst3)
+
+6. Write a program to create a single list with integers & float values and then extract 
+odd and even numbers from the list that you created into a separate list
+
+
+lis=["pavan",2,2.0,'kiran',4,9.0,7.4,5.6,2.2,6,13,22,30,31]
+print(lis)
+#lst=[]
+e=[]
+o=[]
+for i in lis:
+    # m=i%2
+    # if  m>0:
+    #     print(lis[i])
+    if type(i) is int:
+        # print(i)
+        # lst.append(i)
+        if i%2==0:
+            e.append(i)
+        else:
+            o.append(i)
+print(e,o)
+
+1. Write a program to create a big list with 50 items and split them into 5 lists
+
+
+arr=[i+1 for i in range(0,50)]
+a=[]
+for j in range(0,len(arr),10):
+    a.append(arr[j:j+10])
+print(a)
+2. Write a program that has all actions on lists (Say, creation, addition of elements, deletion of elements, 
+sorting of elemets (ascending & descending), copying the list, printing the lsit elements using for loop)
+
+lst=[ 1,2,2,14,8,9]
+
+#soting list using sort method
+lst.sort()
+print("ascending order:\n",lst,end="\n\n")
+
+#descending order using sort and reversed method
+lst.reverse()
+print("descending order:\n",lst,end="\n\n")
+#copying list by creating and assinging to another list 
+lst1=[]
+lst1=lst
+print("copied to new list by creating empty lst1:\n",lst,end="\n\n")
+
+#copying lst to another list using copy method
+lst2=lst.copy()
+print("copied to new list using copy function:\n",lst2,end="\n\n")
+
+#additon of elements in lst
+t=0
+for elements in lst:
+    t+=elements
+print("added the elements in lst:\n",t,end="\n\n")
+
+#printing lst in reverse order using reverse function
+lst.reverse()
+print("reverse order usign fucntion:\n",lst,end="\n\n")
+
+#printing lst in reverse order using slicing
+print("reverse order using sliceing:\n",lst[::-1],end="\n\n")
+
+#adding elements to list
+lst2=["dog","snake","rooster","ox","eyes"]
+lst.insert(3,lst2)
+print("added new elemnts:\n",lst,end="\n\n")
+
+
+
+5. Write a program to create a single list with integers, float, strings values and then write a logic to reverse a string values alone
+
+from audioop import reverse
+
+
+lis=[input("enter thte elements :\n")]
+lis=["pavan",2,2.3,'kiran',3567]
+print(lis)
+for i in lis:
+    if type(i) is str:
+        i=i[::-1]
+        print(i)
+
+4. Write a program to find out the duplicate elements in the list
+
+lst=["pavan",1,2,2,"kiran","pavan","pavan"]
+
+for i in range(len(lst)):
+    for j in range(i+1,len(lst)):
+        if lst[i]==lst[j]:
+            print(lst[i])
+
+
+
+# lst=list(input("enter the list"))
+# print(lst)
+
+
+=======================================================
+TUPLES
+======================================================
+
+2. Write a program that has all actions on tuples (Say, creation, addition of elements, deletion of elements, 
+sorting of elemets (ascending & descending), copying the list, printing the lsit elements using for loop)
+
+
+#creation of list using for loop and range fucnction
+arr=[i+1 for i in range(0,50)]
+
+#converting list to tuple
+arr=tuple(arr)
+print("printing the tupple:\n",arr,end="\n\n")
+
+#changing the tuple to list to add the new elements
+arr=list(arr)
+#print(type(arr))
+#created new tuple 
+tup1=("dog","snake","rooster","ox","eyes")
+#print(type(tup1))
+
+#added new tuple to list using extend fucnction
+arr.extend(tup1)
+print("adding the new elements:\n",tuple(arr),end="\n\n")
+
+#changing the list tuple to remove elements
+arr=list(arr)
+lst1=[]
+lst1=arr
+lst1.pop(-2)
+lst1.remove("eyes")
+print("removing elements:\n",tuple(lst1),end="\n\n")
+
+#sorting elements,since strings are in list TypeError exception is raised
+arr=list(arr)
+try:
+    arr.sort()
+    print("ascending orderd:\n",tuple(arr),end="\n\n")
+except TypeError:
+    print("string cannot compared with int")
+#deleting all the string value in arr list
+arr=list(arr)
+del arr[50:]
+print("deleting elements:\n",tuple(arr),end="\n\n")
+
+
+
+
+3. Write a program to print the tuples elements in the reverse order
+
+arr=list(arr)
+
+arr.sort()
+arr.reverse()
+print("descending orderd:\n",tuple(arr),end="\n\n")
+
+
+
+4. Write a program to create a tuple that is having the list as one of the values and print items
+
+arr=list(arr)
+lst2=["dog","snake","rooster","ox","eyes"]
+arr.insert(4,lst2)
+print("added the list:\n",tuple(arr))
+
+
+
+
+1. Write a program to create a big tuple with 50 items and split them into 5 tuples
+
+
+arr=[i+1 for i in range(0,50)]
+arr=tuple(arr)
+a=[]
+for j in range(0,len(arr),10):
+    a.append(arr[j:j+10])
+print(tuple(a))
+
+mytup=tuple(tuple(j for j in range (i,i+10)) for i in range(1,50,10))
+print(mytup)
+# mytup=tuple(input("enetr the elements").split())
+# print(mytup)
+
+
+==================================================================================
+dict
+==========================
+1. Write a program to create a dictionary with lot of key value pairs
+2 Write a program that has all actions on dictionary (Say, Creation, Addition of key value pairs, updating the kv pairs, deletion of kv pairs, 
+sorting, copying, print only keys, print only values, print (key, values), print(key value))
+
+
+dit={"id":20222,"name":"kiran","gender":"male","company":"hexaware","joindate":2018,"location":"chennai",
+"role":"ASE","project":"AST"}
+
+#adding new ele
+dit["salary"]=200000
+dit.update({"experience":"5years","location":"bengaluru"})
+#upating key values
+
+print("added and updating the elemnts:\n",dit,end="\n\n")
+
+#deleting ele
+dit.pop("experience")
+dit.popitem()
+del dit["joindate"]
+print("deleting the elements:\n",dit,end="\n\n")
+
+#copying
+newdit=dict(dit)
+print("copying dit to newdit:\n",newdit,end="\n\n")
+
+ndit=dit.copy()
+print("copying dit to ndit using copy function:\n",ndit,end="\n\n")
+
+print("only keys of dit\n",dit.keys(),end="\n\n")
+print("only values of dit\n",dit.values(),end="\n\n")
+print("only key values of dit\n",dit.items(),end="\n\n")
+
+
+
+3. Write a program to create a dictionary from a list of lists.
+6. Write a program to convert a dictionary to list
+
+                I/P:         a = [['A',4], ['B',5], ['C',11]]
+
+                output:
+
+                dict(a)
+
+                {'A': 4, 'B': 5, 'C': 11}
+
+
+
+
+lst=[['A',4], ['B',5], ['C',11]]
+dit=dict(lst)
+print(dit)
+
+#coverting ditctionary to list
+dit=list(dit)
+print(dit)
+
+
+4. Write a program to sort the dictionary by Key
+
+
+myDict = {'ravi': 10, 'rajnish': 9,
+		'sanjeev': 15, 'yash': 2, 'suraj': 32}
+
+myKeys = list(myDict.keys())
+print(myKeys)
+myKeys.sort()
+print(myKeys)
+sorted_dict = {i: myDict[i] for i in myKeys}
+
+print(sorted_dict)
+
+# s=list(sorted_dict.values())
+# s.sort()
+# print(s)
+# s={i sorted_dict.values(i) for i in s}
+
+
+
+
+    
+5. Write a program to calculate the sum of all items in the dictionary
+
+#suming the items in dit
+dit={"a":10,"b":40,"c":76}
+print("sum of item in dit\n",sum(dit.values()),end="\n")
+
+#summing the items containg strings
+dit={"a":10,"b":40,"c":76,"name":"pavan"}
+try:
+    print("sum of item in dit\n",sum(dit.values()),end="\n")
+except TypeError:
+    print("string cannot sum with int")
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+1) Last working days
+
+------------------------------------------
+#app.py
+-----------------------------------------
+
+
+from pipes import Template
+import pandas as pd
+from flask import Flask,render_template,redirect,request
+
+
+
+app=Flask(__name__,template_folder='Templates')
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/',methods = ['POST', 'GET'])
+def handle_get():   
+    if request.method == 'POST':
+        year = request.form['year']
+        print(year)
+    
+        s = pd.date_range(year , periods=12, freq='BM')
+        # df = pd.DataFrame(s, columns=['Date'])
+        # x=s.tolist()
+        x=pd.Series(s)
+    return render_template('result.html',wd=x.dt.date) 
+
+    
+if __name__=="__main__":
+    app.run(debug=True)
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+#index.html
+-----------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   
+   <style>
+       .form__group {
+	 position: relative;
+	 padding: 15px 0 0;
+	 margin-top: 10px;
+	 width: 50%;
+}
+ .form__field {
+	 font-family: inherit;
+	 width: 100%;
+	 border: 0;
+	 border-bottom: 2px solid #9b9b9b;
+	 outline: 0;
+	 font-size: 1.3rem;
+	 color: #fff;
+	 padding: 7px 0;
+	 background: transparent;
+	 transition: border-color 0.2s;
+}
+ .form__field::placeholder {
+	 color: transparent;
+}
+ .form__field:placeholder-shown ~ .form__label {
+	 font-size: 1.3rem;
+	 cursor: text;
+	 top: 20px;
+}
+ .form__label {
+	 position: absolute;
+	 top: 0;
+	 display: block;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #9b9b9b;
+    
+}
+ .form__field:focus {
+	 padding-bottom: 6px;
+	 font-weight: 700;
+	 border-width: 3px;
+	 border-image: linear-gradient(to right, #11998e, #38ef7d);
+	 border-image-slice: 1;
+}
+ .form__field:focus ~ .form__label {
+	 position: absolute;
+	 top: 0;
+	 display: block;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #11998e;
+	 font-weight: 700;
+}
+/* reset input */
+ .form__field:required, .form__field:invalid {
+	 box-shadow: none;
+}
+/* demo */
+ body {
+	 font-family: 'Poppins', sans-serif;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 min-height: 100vh;
+	 font-size: 1.5rem;
+	 background-color: rgb(34, 33, 33);
+}
+
+.btn{
+
+    margin-top: 15px;
+}
+.h{
+    color: azure;
+}
+ 
+   </style>
+    <head> 
+        <title>Input year</title>
+    </head> 
+    <center>
+        <body> 
+                <div class="h">
+                    <p>Enter the year to find last working days in each month.</p>
+                </div>
+               
+
+                 <div class="form__group field">
+                    <form  method="POST"
+                    action="{{ url_for('handle_get') }}">
+                    <input type="number" class="form__field" placeholder="Enter the Year" name="year" id='year' required />
+                    <label for="year" class="form__label">Enter Year</label> 
+                    <button class="btn btn-outline-warning button">submit</button>
+                  </div>
+                 <!-- <button class="button ">submit</button> -->
+            </form> 
+           
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+             
+        </body> 
+    </center>
+</html> 
+
+
+
+-----------------------------------------------------------------------------------------------
+
+result.html
+------------------------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html>
+  
+    <style>
+        table, th, td {
+          background-color: beige;
+          border:1px solid black;
+          color: blue;
+        }
+        
+        </style>
+        <body>
+          <center>
+        <table style="width:50%">
+          <tr>
+             <th>Last Working Days</th>
+          </tr>
+
+          <tr>
+            <td>{%for i in range(0,13)%}
+                 <p>{{wd[i]}}</p>
+                 {%endfor%}
+             </td> 
+          </tr>
+         </center> 
+  
+</html>
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+EMAIL
+------------------------------------------------------------------------------------------------
+
+
+app.py
+
+-------------------------------------------------------------------------------------------------
+from flask import* 
+app=Flask(__name__,template_folder='templates')
+# mail_ids={"Username":['pavan@hexaware.com','guruprasd@hexaware.com','chitra@hexaware.com'],
+# "UserId":['78282@hexaware.com','78283@hexaware.com','78284@hexaware.com']}
+
+lst=["pavan@hexaware.com","l","shrunga@hexaware.com","chitra@hexaware.com","krishnendu@hexaware.com","sagar@hexaware.com","sandeep@hexaware.com","guruprasad@hexaware.com"]
+
+@app.route('/')
+def index():
+   return render_template("home.html")
+
+
+@app.route('/newmail',methods = ['POST'])
+def newmail():
+     if request.method == 'POST':
+        # print("hello")
+        to = request.form['To'] 
+
+        for i in lst:
+            print(i)
+            if to==i:
+                 return "<script>alert('Email sent successfully!')</script>"
+        else:
+            return   "<script>alert('Invalid Email ')</script>"
+    # for
+    # m= myFunction()
+
+        return render_template('hello.html')
+
+
+if __name__ =="__main__":
+    app.run(debug=True)
+
+
+---------------------------------------------------------------------------------------------------
+Home.html
+--------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <title>Homemail</title>
+  <style>
+     body{
+            background-color: rgb(167, 175, 173);
+        }
+       .comp ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 200px;
+          background-color: #f1f1f1;
+        }
+       .comp ,li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        /* Change the link color on hover */
+        .comp li a:hover {
+          background-color: #555;
+          color: white;
+        }
+  .modal-header, h4, .close {
+    background-color: #4cc265;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  .comp ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              width: 200px;
+              background-color: #f1f1f1;
+        }
+
+        .comp ,li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+  .comp li a:hover {
+    background-color: rgb(66, 192, 114);
+    color: white;
+  }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div calss="BackToHome">
+        <link rel="stylesheet" href=https://fontawesome.com/docs/web/style/fixed-width>
+        </span></p>    
+              <a href="http://127.0.0.1:5500/templates/index.html">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </a>
+    </div>
+
+
+    <a class="navbar-brand" href="#">Email</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+    </div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-itemn active">
+                 <!-- Trigger the modal with a button -->
+                <button type="button"class="btn btn-outline-primary my-2 my-sm-0" id="myBtn">New Mail</button>
+                <!-- <a class="nav-link" href="http://127.0.0.1:5500/templates/newmail.html">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">New Mail
+                </button></a> -->
+            </li>
+    </div>
+        
+    
+        
+
+
+    <!-- <a href="http://127.0.0.1:5500/templates/newmail.html">
+    <button>NewMail</button>
+    </a> -->
+</nav>
+
+<div class="comp">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">Inbox</a></li>
+        <li><a href="#contact">Sent items</a></li>
+        <li><a href="#about">Draft</a></li>
+        <li><a href="#about">Starred</a></li>
+        <li><a href="#about">Spam</a></li>
+        <li><a href="#about">Trash</a></li>
+    </ul>
+</div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    -->
+
+<div class="container">
+  <!-- <h2>Modal Login Example</h2>
+ 
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">Lin</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+            <h4> NewMail</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action="{{ url_for('newmail')}}" method="POST" role="form">
+            <div class="form-group">
+              <label for="from"><span class="glyphicon glyphicon"></span> From</label>
+              <input type="text" class="form-control" id="From" placeholder="From" required>
+            </div>
+            <div class="form-group">
+              <label for="To"><span class="glyphicon glyphicon"></span> To</label>
+              <input type="text" class="form-control" name="To" id="To" placeholder="TO" required>
+            </div>
+            <div class="form-group">
+                <label for="sub"><span class="glyphicon glyphicon"></span> subject</label>
+                <input type="text" class="form-control" id="subject" placeholder="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comp"><span class="glyphicon glyphicon"></span> compose</label>
+                <textarea class="form-control" id="compose" placeholder="compose"name="compose" rows="4" cols="5"></textarea>
+                <!-- <input type="textarea" > -->
+            </div>
+            
+              <button type="submit" class="btn btn-success btn-block" onclick="send()"><span class="glyphicon glyphicon"></span> Send</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+
+</script>
+
+</body>
+</html>
+
+
+
